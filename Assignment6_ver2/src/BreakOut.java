@@ -139,7 +139,11 @@ public class BreakOut implements ActionListener {
 		this.frame.getContentPane().add(this.panRulesHighScoreContent);
 		this.panRulesHighScoreContent.setVisible(false);
 		
-		
+		this.panGameContent = new GameBoard(this);
+		this.panGameContent.setBackground(Color.WHITE);
+		this.panGameContent.setBounds(6, 55, 588, 458);
+		this.frame.getContentPane().add(this.panGameContent);
+		this.panGameContent.setVisible(false);
 		
 		this.btnNewPlayer = new JButton("New Player");
 		this.btnNewPlayer.setFont(new Font("AppleGothic", Font.PLAIN, 15));
@@ -183,7 +187,7 @@ public class BreakOut implements ActionListener {
 		if (button.getSource().equals(this.btnNewPlayer)) {
 			this.panStartContent.setVisible(false);
 			this.panNewLoadPlayerContent.setVisible(true);
-			//this.panGameContent.setVisible(false);
+			this.panGameContent.setVisible(false);
 			this.panRulesHighScoreContent.setVisible(false);
 			
 			this.tFieldNewLoadPlayerID.setBackground(Color.WHITE);
@@ -196,7 +200,7 @@ public class BreakOut implements ActionListener {
 		else if (button.getSource().equals(this.btnLoadPlayer)) {
 			this.panStartContent.setVisible(false);
 			this.panNewLoadPlayerContent.setVisible(true);
-			//this.panGameContent.setVisible(false);
+			this.panGameContent.setVisible(false);
 			this.panRulesHighScoreContent.setVisible(false);
 			
 			this.tFieldNewLoadPlayerID.setBackground(Color.WHITE);
@@ -216,22 +220,17 @@ public class BreakOut implements ActionListener {
 				this.tFieldNewLoadPlayerID.setText("No blankspaces in PlayerID.");
 			}
 			else {
-				addLoadPlayerID(this.btnAddLoadPlayerID);
+				this.addLoadPlayerID(this.btnAddLoadPlayerID);
 			}
 		}
 		else if (button.getSource().equals(this.btnStartGame)) {
 			if (this.player != null) {
 				this.panStartContent.setVisible(false);
 				this.panNewLoadPlayerContent.setVisible(false);
-				//this.panGameContent.setVisible(true);
+				this.panGameContent.setVisible(true);
 				this.panRulesHighScoreContent.setVisible(false);
 				
-				this.panGameContent = new GameBoard();
-				this.panGameContent.setBackground(Color.WHITE);
-				this.panGameContent.setBounds(6, 55, 588, 458);
-				this.frame.getContentPane().add(this.panGameContent);
-				this.panGameContent.setVisible(true);
-				
+				this.panGameContent.restartGame(player);
 				
 				System.out.println("Start Game");
 			}
@@ -243,7 +242,7 @@ public class BreakOut implements ActionListener {
 		else if (button.getSource().equals(this.btnHighScore)) {
 			this.panStartContent.setVisible(false);
 			this.panNewLoadPlayerContent.setVisible(false);
-			//this.panGameContent.setVisible(false);
+			this.panGameContent.setVisible(false);
 			this.panRulesHighScoreContent.setVisible(true);
 			
 			this.highScoreList.printHighScore(this.panRulesHighScoreContent);
@@ -252,7 +251,7 @@ public class BreakOut implements ActionListener {
 		else if (button.getSource().equals(this.btnGameRules)) {
 			this.panStartContent.setVisible(false);
 			this.panNewLoadPlayerContent.setVisible(false);
-			//this.panGameContent.setVisible(false);
+			this.panGameContent.setVisible(false);
 			this.panRulesHighScoreContent.setVisible(true);
 			
 			this.rules.printRules(this.panRulesHighScoreContent);
@@ -264,7 +263,7 @@ public class BreakOut implements ActionListener {
 	}
 	
 	public void addLoadPlayerID(JButton button) {
-		this.player = new Player(tFieldNewLoadPlayerID.getText(), 0, 3, this.highScoreList);
+		this.player = new Player(this.tFieldNewLoadPlayerID.getText(), 0, this.highScoreList);
 		//boolean exist = this.player.playerExistInList();
 		//System.out.println("Exist = " + exist);
 		if (button.getText().equals("Add")){
@@ -280,7 +279,7 @@ public class BreakOut implements ActionListener {
 				
 				this.panStartContent.setVisible(true);
 				this.panNewLoadPlayerContent.setVisible(false);
-				//this.panGameContent.setVisible(false);
+				this.panGameContent.setVisible(false);
 				this.panRulesHighScoreContent.setVisible(false);
 			}
 		}
@@ -293,7 +292,7 @@ public class BreakOut implements ActionListener {
 				
 				this.panStartContent.setVisible(true);
 				this.panNewLoadPlayerContent.setVisible(false);
-				//this.panGameContent.setVisible(false);
+				this.panGameContent.setVisible(false);
 				this.panRulesHighScoreContent.setVisible(false);
 			}
 			else {

@@ -53,9 +53,8 @@ public class HighScore {
 				while (this.scanner.hasNext()) {
 					String playerID = scanner.next();
 					int bestScore = scanner.nextInt();
-					int lifes = 0;
 					
-					Player record = new Player(playerID, bestScore, lifes, this);
+					Player record = new Player(playerID, bestScore, this);
 					this.highScore.add(indexCount, record);
 					indexCount++;
 				}
@@ -86,9 +85,9 @@ public class HighScore {
 		this.sortHighScore();
 	}
 	
-	public void updatePlayerInHighScore (Player player) {
+	public void updatePlayerInHighScore(Player player) {
 		for (int i = 0; i < this.getHighScoreSize() ;i++) {
-			if (player.getPlayerID() == this.highScore.get(i).getPlayerID()) {
+			if (this.highScore.get(i).getPlayerID().equals(player.getPlayerID())) {
 				this.highScore.get(i).setHighScore(player.getHighScore());
 			}
 		}

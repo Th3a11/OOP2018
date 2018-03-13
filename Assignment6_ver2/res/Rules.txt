@@ -1,13 +1,14 @@
-Rules
-
 1. Use the space key to release the ball from the 'skateboard'.
 
-2. Use left and right arrow keys to move the 'skateboard' back and forth, to make the ball bounce on the 'skateboard' and get the ball to hit the boxes above the 'skateboard'.
+2. Use left and right arrow keys to move the 'skateboard' back and forth.
 
-3. Every box gives a point when hit with the ball, some boxes need to be hit multiple times for it to disappear.
+3. Make the ball bounce on the 'skateboard' and get the ball to hit the boxes above.
 
-4. When a box disappear the balls speed will increase.
+4. Every box gives 5 point when hit with the ball.
 
-5. If you miss to bounce the ball on your 'skateboard' you will loose a life.
+5. When a box is hit the balls speed will increase.
+
+6. If you miss to bounce the ball on your 'skateboard' you will loose a life.
+
 
 Good luck! :)

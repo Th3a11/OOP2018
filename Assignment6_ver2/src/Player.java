@@ -2,13 +2,11 @@
 public class Player {
 	private String playerID;
 	private int bestScore;
-	private int lifes;
 	private HighScore list;
 	
-	public Player(String playerID, int bestScore, int lifes, HighScore list) {
+	public Player(String playerID, int bestScore, HighScore list) {
 		setPlayerID(playerID);
 		setHighScore(bestScore);
-		setLives(lifes);
 		this.list = list;
 	}
 	
@@ -18,14 +16,6 @@ public class Player {
 	
 	public String getPlayerID() {
 		return this.playerID;
-	}
-	
-	public void setLives(int lifes) {
-		this.lifes = lifes;
-	}
-	
-	public int getLives() {
-		return this.lifes;
 	}
 	
 	public void setHighScore(int bestScore) {
